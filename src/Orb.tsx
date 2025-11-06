@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Renderer, Program, Mesh, Triangle, Vec3 } from "ogl";
+import * as ogl from "ogl";
 import "./Orb.css";
 
 export default function Orb({
@@ -173,19 +173,19 @@ export default function Orb({
     if (!container) return;
 
     // Código de inicialização OGL... (o resto é o mesmo que você já tem)
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
+    const renderer = new ogl.Renderer({ alpha: true, premultipliedAlpha: false });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     container.appendChild(gl.canvas);
 
-    const geometry = new Triangle(gl);
-    const program = new Program(gl, {
+    const geometry = new ogl.Triangle(gl);
+    const program = new ogl.Program(gl, {
       vertex: vert,
       fragment: frag,
       uniforms: {
         iTime: { value: 0 },
         iResolution: {
-          value: new Vec3(
+          value: new ogl.Vec3(
             gl.canvas.width,
             gl.canvas.height,
             gl.canvas.width / gl.canvas.height
@@ -198,7 +198,7 @@ export default function Orb({
       },
     });
 
-    const mesh = new Mesh(gl, { geometry, program });
+    const mesh = new ogl.Mesh(gl, { geometry, program });
 
     function resize() {
       if (!container) return;
@@ -283,4 +283,3 @@ export default function Orb({
   // Esta parte é o que o App.tsx realmente renderiza (o div contêiner do Orb)
   return <div ref={ctnDom} className="orb-container" />;
 }
-
