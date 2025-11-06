@@ -9,7 +9,8 @@
   ],
   "main": "src/index.tsx",
   "dependencies": {
-    "loader-utils": "3.2.1",
+    "cross-env": "^7.0.3", <-- LINHA QUE TU DISSE PARA ADICIONAR
+    "loader-utils": "3.2.1", <-- ESTA LINHA JÁ ESTAVA NO CODIGO, ESTA CORRETO?
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.1",
@@ -22,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false react-scripts build",
+    "build": "cross-env CI=false react-scripts build", <--- MUDANÇA
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
