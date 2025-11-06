@@ -278,9 +278,9 @@ export default function Orb({
       container.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hue, hoverIntensity, rotateOnHover, forceHoverState]);
 
   // Esta parte é o que o App.tsx realmente renderiza (o div contêiner do Orb)
   return <div ref={ctnDom} className="orb-container" />;
 }
+
